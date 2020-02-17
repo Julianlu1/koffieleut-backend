@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KoffieLeutBackEnd.iml" filepath="$PROJECT_DIR$/KoffieLeutBackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/koffieleutRest/koffieleutRest.iml" filepath="$PROJECT_DIR$/koffieleutRest/koffieleutRest.iml" />
     </modules>
   </component>
 </project>
