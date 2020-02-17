@@ -27,6 +27,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope> provided</scope>
+            <version> 1.18.10</version>
+        </dependency>
     </dependencies>
 
     <build>
