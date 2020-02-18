@@ -19,6 +19,7 @@ public class MainApplicationClass {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/order/all").allowedOrigins("*");
+                registry.addMapping("/order/create").allowedOrigins("*");
             }
         };
     }
