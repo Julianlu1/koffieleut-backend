@@ -1,8 +1,6 @@
 package server.classes;
 
 import lombok.Data;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 
