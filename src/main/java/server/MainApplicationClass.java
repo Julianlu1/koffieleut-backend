@@ -20,6 +20,7 @@ public class MainApplicationClass {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/order/all").allowedOrigins("*");
                 registry.addMapping("/order/create").allowedOrigins("*");
+                registry.addMapping("/coffee/all").allowedOrigins("*");
             }
         };
     }

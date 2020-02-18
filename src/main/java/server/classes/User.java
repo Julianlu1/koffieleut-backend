@@ -1,5 +1,6 @@
 package server.classes;
 
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,5 +25,6 @@ public class User {
         this.password = password;
     }
     public User()
-    {}
+    {
+    }
 }
