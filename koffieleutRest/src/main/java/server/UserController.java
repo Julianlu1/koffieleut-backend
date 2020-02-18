@@ -29,9 +29,10 @@ public class UserController {
 
     @PostMapping("/user/register")
     public User register(@RequestBody Map<String, String> body){
+        String name = body.get("name");
         String username = body.get("username");
         String password = body.get("password");
-        User user = userRepository.findByUsernameAndPassword(username,password);
+        User user = userRepository.save(new User(username,name,password));
 
         return user;
     }
