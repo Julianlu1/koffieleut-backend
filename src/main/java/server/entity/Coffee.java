@@ -1,4 +1,4 @@
-package server.classes;
+package server.entity;
 
 import lombok.Data;
 
