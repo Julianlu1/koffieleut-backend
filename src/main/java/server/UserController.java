@@ -1,6 +1,10 @@
 package server;
 
+import com.google.gson.Gson;
+import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,20 +23,25 @@ public class UserController {
 
     HashLogic hashLogic = new HashLogic();
 
+    Gson gson = new Gson();
+
     @PostMapping("/user/login")
-    public User login(@RequestBody Map<String, String> body){
+    public ResponseEntity login(@RequestBody Map<String, String> body){
+
         String username = body.get("username");
         String password = body.get("password");
         String hashedPassword = userRepository.findByUsername(username).getPassword();
 
-        User user = new User();
+        User user;
         boolean isLoggedIn = hashLogic.checkPassword(password,hashedPassword);
 
         if(isLoggedIn){
             user = userRepository.findByUsername(username);
+            return new ResponseEntity(gson.toJson(user), HttpStatus.OK);
+        }else{
+            Response response = new Response("Gebruikersnaam of Wachtwoord komt niet overeen");
+            return new ResponseEntity(gson.toJson(response), HttpStatus.BAD_REQUEST);
         }
-
-        return user;
     }
 
     @PostMapping("/user/register")
