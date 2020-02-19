@@ -24,7 +24,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -90,5 +90,6 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.44" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
     <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
   </component>
 </module>
