@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import server.classes.Order;
-import server.classes.User;
+import server.entity.Order;
 import server.repositories.OrderRepository;
 import server.repositories.UserRepository;
 

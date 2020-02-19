@@ -22,6 +22,7 @@ public class MainApplicationClass {
                 registry.addMapping("/order/create").allowedOrigins("*");
                 registry.addMapping("/coffee/all").allowedOrigins("*");
                 registry.addMapping("/user/login").allowedOrigins("*");
+                registry.addMapping("/user/register").allowedOrigins("*");
             }
         };
     }
