@@ -1,13 +1,16 @@
 package server;
 
-import org.mindrot.jbcrypt.BCrypt;
+import com.google.gson.Gson;
+import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import server.classes.Order;
-import server.classes.User;
+import server.entity.User;
+import server.logic.HashLogic;
 import server.repositories.UserRepository;
 
 import java.util.List;
@@ -18,13 +21,27 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    HashLogic hashLogic = new HashLogic();
+
+    Gson gson = new Gson();
+
     @PostMapping("/user/login")
-    public User login(@RequestBody Map<String, String> body){
+    public ResponseEntity login(@RequestBody Map<String, String> body){
+
         String username = body.get("username");
         String password = body.get("password");
-        User user = userRepository.findByUsernameAndPassword(username,password);
+        String hashedPassword = userRepository.findByUsername(username).getPassword();
 
-        return user;
+        User user;
+        boolean isLoggedIn = hashLogic.checkPassword(password,hashedPassword);
+
+        if(isLoggedIn){
+            user = userRepository.findByUsername(username);
+            return new ResponseEntity(gson.toJson(user), HttpStatus.OK);
+        }else{
+            Response response = new Response("Gebruikersnaam of Wachtwoord komt niet overeen");
+            return new ResponseEntity(gson.toJson(response), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/user/register")
@@ -32,7 +49,9 @@ public class UserController {
         String name = body.get("name");
         String username = body.get("username");
         String password = body.get("password");
-        User user = userRepository.save(new User(username,name,password));
+
+        String hashedPassword = hashLogic.hashPassword(password);
+        User user = userRepository.save(new User(username,name,hashedPassword));
 
         return user;
     }
@@ -43,20 +62,4 @@ public class UserController {
     }
 
 
-    public String hashPassword(String passwordPlaintext) {
-        int workload = 12;
-        String salt = BCrypt.gensalt(workload);
-        return BCrypt.hashpw(passwordPlaintext, salt);
-    }
-
-    public  boolean checkPassword(String password_plaintext, String storedHash) {
-        boolean passwordVerified = false;
-
-        if(null == storedHash || !storedHash.startsWith("$2a$"))
-            throw new IllegalArgumentException("Invalid hash provided for comparison");
-
-        passwordVerified = BCrypt.checkpw(password_plaintext, storedHash);
-
-        return(passwordVerified);
-    }
 }

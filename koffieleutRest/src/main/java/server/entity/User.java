@@ -1,4 +1,4 @@
-package server.classes;
+package server.entity;
 
 
 import lombok.Data;
@@ -31,5 +31,9 @@ public class User {
 
     public User() {
 
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
