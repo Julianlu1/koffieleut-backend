@@ -5,6 +5,7 @@ m
 =koffieleutRest/src/main/java/server/MainApplicationClass.java,4\3\43950eaa7016fc1e5d97d6d86c194e065788e3f1
 h
 8koffieleutRest/src/main/java/server/OrderController.java,5\b\5b640a88b45623fb99b19fbd7338d901d1339ea3
+<<<<<<< HEAD
 e
 5koffieleutRest/src/main/java/server/entity/Order.java,c\6\c69be94a17d4b7526c1893cf40009690e238bf75
 i
@@ -25,3 +26,7 @@ g
 7koffieleutRest/src/main/java/server/UserController.java,4\f\4fe7bbf708fed111d04900e277fd52aa5c52e76d
 f
 6koffieleutRest/src/main/java/server/entity/Coffee.java,5\0\502844a6fef96f0a5089a32ea65e24543097b7ad
+=======
+g
+7koffieleutRest/src/main/java/server/UserController.java,4\f\4fe7bbf708fed111d04900e277fd52aa5c52e76d
+>>>>>>> 67cdacb920efcdf30edfb68316cb9ab960fda8b8
