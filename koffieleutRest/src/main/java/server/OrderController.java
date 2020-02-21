@@ -1,10 +1,7 @@
 package server;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import server.entity.Order;
 import server.repositories.OrderRepository;
 import server.repositories.UserRepository;
@@ -33,5 +30,13 @@ public class OrderController {
         String location = body.get("location");
         String code = body.get("code");
         return orderRepository.save(new Order(name,location,code));
+    }
+
+    @DeleteMapping("/order/delete/{orderId}")
+    public Order deleteOrder(@RequestBody Map<String,String> body){
+        int id = Integer.parseInt(body.get("orderId"));
+        Order order = orderRepository.findOne(id);
+        orderRepository.delete(order);
+        return order;
     }
 }
