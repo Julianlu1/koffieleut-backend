@@ -43,8 +43,8 @@ public class OrderController {
     }
 
     @DeleteMapping("/order/delete/{orderId}")
-    public Order deleteOrder(@RequestBody Map<String,String> body){
-        int id = Integer.parseInt(body.get("orderId"));
+    public Order deleteOrder(@PathVariable String orderId){
+        int id = Integer.parseInt(orderId);
         Order order = orderRepository.findOne(id);
         orderRepository.delete(order);
         return order;

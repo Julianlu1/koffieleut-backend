@@ -36,4 +36,8 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public int getId() {
+        return id;
+    }
 }

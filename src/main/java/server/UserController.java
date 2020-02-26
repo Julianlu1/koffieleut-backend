@@ -13,6 +13,7 @@ import server.entity.User;
 import server.logic.HashLogic;
 import server.repositories.UserRepository;
 
+import javax.servlet.http.Cookie;
 import java.util.List;
 import java.util.Map;
 
@@ -30,13 +31,22 @@ public class UserController {
 
         String username = body.get("username");
         String password = body.get("password");
-        String hashedPassword = userRepository.findByUsername(username).getPassword();
+        String hashedPassword = "";
+        try{
+            hashedPassword = userRepository.findByUsername(username).getPassword(); // Gebruiker zoeken
+        }catch(Exception e){
+            Response response = new Response("Gebruikersnaam bestaat niet");
+            return new ResponseEntity(gson.toJson(response), HttpStatus.BAD_REQUEST);
+        }
 
         User user;
         boolean isLoggedIn = hashLogic.checkPassword(password,hashedPassword);
 
         if(isLoggedIn){
             user = userRepository.findByUsername(username);
+            Cookie cookie = new Cookie("id", Integer.toString(user.getId()));
+            cookie.setHttpOnly(true);
+            cookie.setPath("/");
             return new ResponseEntity(gson.toJson(user), HttpStatus.OK);
         }else{
             Response response = new Response("Gebruikersnaam of Wachtwoord komt niet overeen");
