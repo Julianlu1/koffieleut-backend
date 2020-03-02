@@ -1,12 +1,5 @@
-image: node:latest
+demo_job_1:
      tags:
        - ci
-         stages:
-           - build-test
-
-         local_integration_test:
-           stage: build-test
-           script:
-             - npm install
-             - node server.js &
-             - npm test "src/test/java/server.logic/HashLogicTest.js"
+     script:
+       - Hello World
