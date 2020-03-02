@@ -14,6 +14,9 @@ public class Order {
     @Column(name="id")
     private int id;
 
+    @Column(name="user_id")
+    private int userId;
+
     @Column(name="name")
     private String name;
 
@@ -26,7 +29,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(String name, String location, String code) {
+    public Order(int userId, String name, String location, String code) {
+        this.userId = userId;
         this.name = name;
         this.location = location;
         this.code = code;
