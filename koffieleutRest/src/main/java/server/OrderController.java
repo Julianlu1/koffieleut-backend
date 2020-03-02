@@ -39,7 +39,7 @@ public class OrderController {
         return orderRepository.save(new Order(userId, location,code));
     }
 
-    @DeleteMapping("/order/delete/{orderId}")
+    @DeleteMapping("/order/delete")
     public Order deleteOrder(@RequestBody Map<String,String> body){
         int id = Integer.parseInt(body.get("orderId"));
         Order order = orderRepository.findOne(id);

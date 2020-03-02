@@ -18,11 +18,11 @@ public class MainApplicationClass {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/order/all").allowedOrigins("*");
-                registry.addMapping("/order/create").allowedOrigins("*");
-                registry.addMapping("/coffee/all").allowedOrigins("*");
-                registry.addMapping("/user/login").allowedOrigins("*");
-                registry.addMapping("/user/register").allowedOrigins("*");
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
+                        .allowedHeaders("*", "Access-Control-Allow-Headers", "origin", "Content-type", "accept", "x-requested-with", "x-requested-by") //What is this for?
+                        .allowCredentials(true);
             }
         };
     }
