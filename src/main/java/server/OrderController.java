@@ -24,8 +24,6 @@ public class OrderController {
     @Autowired
     UserRepository userRepository;
 
-
-
     @GetMapping("/order/all")
     public List<OrderDto> index(){
         List<OrderDto> orderDtoList = new ArrayList<OrderDto>();
