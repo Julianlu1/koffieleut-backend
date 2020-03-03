@@ -2,12 +2,14 @@ package server;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import server.dto.OrderDto;
 import server.entity.Order;
 import server.entity.User;
 import server.logic.OrderLogic;
 import server.repositories.OrderRepository;
 import server.repositories.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,9 +24,17 @@ public class OrderController {
     @Autowired
     UserRepository userRepository;
 
+
+
     @GetMapping("/order/all")
-    public List<Order> index(){
-        return orderRepository.findAll();
+    public List<OrderDto> index(){
+        List<OrderDto> orderDtoList = new ArrayList<OrderDto>();
+
+        for(Order order: orderRepository.findAll()){
+            orderDtoList.add(new OrderDto(order));
+        }
+
+        return orderDtoList;
     }
 
     @PostMapping("/order/create")
