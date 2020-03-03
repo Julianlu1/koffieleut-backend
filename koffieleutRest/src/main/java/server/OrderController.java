@@ -3,6 +3,7 @@ package server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import server.entity.Order;
+import server.entity.User;
 import server.logic.OrderLogic;
 import server.repositories.OrderRepository;
 import server.repositories.UserRepository;
@@ -34,9 +35,10 @@ public class OrderController {
         int coffeeId = Integer.parseInt(body.get("coffeeId"));
         int userId = Integer.parseInt(body.get("userId"));
 
+        User currentUser = userRepository.findOne(userId);
         String code = orderLogic.createCode(coffeeId, strength, milk);
 
-        return orderRepository.save(new Order(userId, location,code));
+        return orderRepository.save(new Order(currentUser, location,code));
     }
 
     @DeleteMapping("/order/delete")

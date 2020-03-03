@@ -14,8 +14,9 @@ public class Order {
     @Column(name="id")
     private int id;
 
-    @Column(name="user_id")
-    private int userId;
+    @ManyToOne
+    private User user;
+
 
     @Column(name="location")
     private String location;
@@ -26,9 +27,42 @@ public class Order {
     public Order() {
     }
 
-    public Order(int userId, String location, String code) {
-        this.userId = userId;
+    public Order(User user, String location, String code) {
+        this.user = user;
         this.location = location;
+        this.code = code;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
         this.code = code;
     }
 }
