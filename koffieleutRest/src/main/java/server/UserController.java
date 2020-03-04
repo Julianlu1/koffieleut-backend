@@ -5,10 +5,8 @@ import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import server.entity.Score;
 import server.entity.User;
 import server.logic.HashLogic;
 import server.repositories.UserRepository;
@@ -49,9 +47,9 @@ public class UserController {
         String name = body.get("name");
         String username = body.get("username");
         String password = body.get("password");
-
+        int score = 0;
         String hashedPassword = hashLogic.hashPassword(password);
-        User user = userRepository.save(new User(username,name,hashedPassword));
+        User user = userRepository.save(new User(username,name,hashedPassword,score));
 
         return user;
     }
@@ -61,5 +59,16 @@ public class UserController {
         return userRepository.findAll();
     }
 
+
+    @PutMapping("/user/score/add")
+    public User addScore(@RequestBody Map<String, String> body){
+        int id = Integer.parseInt(body.get("id"));
+
+        User u = userRepository.findById(id);
+        u.setScore(u.getScore() +1);
+        userRepository.save(u);
+
+        return u;
+    }
 
 }
