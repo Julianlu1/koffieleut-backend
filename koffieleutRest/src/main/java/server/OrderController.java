@@ -41,9 +41,9 @@ public class OrderController {
         int strength = Integer.parseInt(body.get("strength"));
         int milk = Integer.parseInt(body.get("milk"));
         int coffeeId = Integer.parseInt(body.get("coffeeId"));
-        int userId = Integer.parseInt(body.get("userId"));
+        String userId = body.get("userId");
 
-        User currentUser = userRepository.findOne(userId);
+        User currentUser = userRepository.findById(userId);
         String code = orderLogic.createCode(coffeeId, strength, milk);
 
         return orderRepository.save(new Order(currentUser, location,code));
