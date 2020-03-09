@@ -19,3 +19,11 @@ m
 =koffieleutRest/src/test/java/server/CoffeeControllerTest.java,4\e\4e0ba01e364b72ad05d33be812d85103305613dd
 E
 KoffieLeutBackEnd.iml,c\b\cbab123f9620acee22b62fa44b4997ae5be4df2d
+u
+EkoffieleutRest/src/main/java/server/repositories/ScoreRepository.java,2\5\252e1cdc195bd00e09a961c19a2ef44e97de380a
+h
+8koffieleutRest/src/main/java/server/ScoreController.java,0\c\0c8e41d1a98afae657259340965235f72305e866
+t
+DkoffieleutRest/src/main/java/server/repositories/UserRepository.java,e\5\e5f31dbe252cb3054e9ac34e917b907928bd9c2f
+i
+9koffieleutRest/src/main/java/server/CoffeeController.java,d\6\d61633ee6c29ec0da42f0c73f08bc657d31cc142
