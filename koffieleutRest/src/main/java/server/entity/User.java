@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Table(name="`user`")
 @Data
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private String id;
 
     @Column(name = "username")
     private String username;
@@ -26,7 +26,8 @@ public class User {
     @Column(name = "score")
     private int score;
 
-    public User(String username, String name, String password, int score) {
+    public User(String uuid, String username, String name, String password, int score) {
+        this.id = uuid;
         this.username = username;
         this.name = name;
         this.password = password;
@@ -37,11 +38,11 @@ public class User {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
