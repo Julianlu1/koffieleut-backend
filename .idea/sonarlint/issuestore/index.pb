@@ -19,3 +19,15 @@ m
 =koffieleutRest/src/test/java/server/CoffeeControllerTest.java,4\e\4e0ba01e364b72ad05d33be812d85103305613dd
 E
 KoffieLeutBackEnd.iml,c\b\cbab123f9620acee22b62fa44b4997ae5be4df2d
+h
+8koffieleutRest/src/main/java/server/logic/HashLogic.java,8\3\8319f1db4339ad47741b1d5c47c0144e0c6304d5
+i
+9koffieleutRest/src/main/java/server/CoffeeController.java,d\6\d61633ee6c29ec0da42f0c73f08bc657d31cc142
+e
+5koffieleutRest/src/main/java/server/ErrorMessage.java,5\8\5874ab1eb65962a220cd58f3bd426495922a8e8f
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+t
+DkoffieleutRest/src/main/java/server/repositories/UserRepository.java,e\5\e5f31dbe252cb3054e9ac34e917b907928bd9c2f
+h
+8koffieleutRest/src/main/java/server/ScoreController.java,0\c\0c8e41d1a98afae657259340965235f72305e866
