@@ -1,4 +1,4 @@
 
-`squid:UselessImportCheck	"0Remove this unused import 'server.entity.Score'.(©ÏˆÊûÿÿÿÿ8‡Óç­Š.
+ssquid:S14888"\Immediately return this expression instead of assigning it to the temporary variable "user".(úª«
 [squid:UselessImportCheck"7Remove this unused import 'org.aspectj.bridge.Message'.(”Á·ª
-zsquid:S14888"\Immediately return this expression instead of assigning it to the temporary variable "user".(úª«8œé­ú‹.
+`squid:UselessImportCheck	"0Remove this unused import 'server.entity.Score'.(©ÏˆÊûÿÿÿÿ8ÙŞ›­Š.

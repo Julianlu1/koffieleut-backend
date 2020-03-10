@@ -1,4 +1,4 @@
-package server;
+package server.controller;
 
 import com.google.gson.Gson;
 import org.aspectj.bridge.Message;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import server.Response;
 import server.entity.Score;
 import server.entity.User;
 import server.logic.HashLogic;
