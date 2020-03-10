@@ -1,4 +1,0 @@
-# Created at 2020-03-03T12:38:21.162
-Boot Manifest-JAR contains absolute paths in classpath 'D:\FontysICT\Semester 4\Fun4\Koffieleut\koffieleut-backend\koffieleut-backend\koffieleutRest\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-

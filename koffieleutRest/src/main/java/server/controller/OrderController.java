@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import server.Response;
 import server.dto.OrderDto;
 import server.entity.Order;
-import server.entity.User;
 import server.logic.OrderLogic;
 import server.repositories.OrderRepository;
 import server.repositories.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,13 +30,7 @@ public class OrderController {
 
     @GetMapping("/order/all")
     public List<OrderDto> index(){
-        List<OrderDto> orderDtoList = new ArrayList<OrderDto>();
-
-        for(Order order: orderRepository.findAll()){
-            orderDtoList.add(new OrderDto(order));
-        }
-
-        return orderDtoList;
+        return orderLogic.getDtoList(orderRepository.findAll());
     }
 
     @PostMapping("/order/create")
@@ -49,14 +41,14 @@ public class OrderController {
         int coffeeId = Integer.parseInt(body.get("coffeeId"));
         String userId = body.get("userId");
 
-        User currentUser = userRepository.findById(userId);
-        String code = orderLogic.createCode(coffeeId, strength, milk);
+        Order currentOrder = orderLogic.createOrder(location, strength, milk, coffeeId, userRepository.findById(userId));
 
-        if(location == ""){
+        if(currentOrder == null){
             Response response = new Response("Locatie niet ingevuld");
-            return new ResponseEntity(gson.toJson(response), HttpStatus.I_AM_A_TEAPOT);
-        }else{
-            return orderRepository.save(new Order(currentUser, location,code));
+            return new ResponseEntity<String>(gson.toJson(response), HttpStatus.I_AM_A_TEAPOT);
+        }
+        else{
+            return orderRepository.save(currentOrder);
         }
     }
 
