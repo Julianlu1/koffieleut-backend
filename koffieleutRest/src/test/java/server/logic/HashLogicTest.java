@@ -21,8 +21,8 @@ class HashLogicTest {
         String hashedPassword = hashLogic.hashPassword(password);
 
         boolean passwordCorrect = hashLogic.checkPassword(password, hashedPassword);
-/////////
-        Assert.assertFalse(passwordCorrect);
+
+        Assert.assertTrue(passwordCorrect);
     }
 
     @Test
