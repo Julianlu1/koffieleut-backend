@@ -1,6 +1,9 @@
 package server;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.dto.OrderDto;
 import server.entity.Order;
@@ -24,6 +27,8 @@ public class OrderController {
     @Autowired
     UserRepository userRepository;
 
+    Gson gson = new Gson();
+
     @GetMapping("/order/all")
     public List<OrderDto> index(){
         List<OrderDto> orderDtoList = new ArrayList<OrderDto>();
@@ -36,7 +41,7 @@ public class OrderController {
     }
 
     @PostMapping("/order/create")
-    public Order createOrder(@RequestBody Map<String, String> body){
+    public Object createOrder(@RequestBody Map<String, String> body){
         String location = body.get("location");
         int strength = Integer.parseInt(body.get("strength"));
         int milk = Integer.parseInt(body.get("milk"));
@@ -46,7 +51,12 @@ public class OrderController {
         User currentUser = userRepository.findById(userId);
         String code = orderLogic.createCode(coffeeId, strength, milk);
 
-        return orderRepository.save(new Order(currentUser, location,code));
+        if(location == ""){
+            Response response = new Response("Locatie niet ingevuld");
+            return new ResponseEntity(gson.toJson(response), HttpStatus.I_AM_A_TEAPOT);
+        }else{
+            return orderRepository.save(new Order(currentUser, location,code));
+        }
     }
 
     @DeleteMapping("/order/delete")
