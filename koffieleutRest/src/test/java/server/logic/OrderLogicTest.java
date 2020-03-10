@@ -45,10 +45,10 @@ class OrderLogicTest {
     @Test
     void getDtoList() {
         List<OrderDto> orderDtoList = orderLogic.getDtoList(orderMock.getOrderList());
-        List<OrderDto> properDtoList = orderDtoMock.getOrderDtoList();
+        List<Order> orderList = orderMock.getOrderList();
 
-        assertEquals(properDtoList.get(0).getId(), orderDtoList.get(0).getId());
-        assertEquals(properDtoList.get(2).getId(), orderDtoList.get(2).getId());
+        assertEquals(orderList.get(0).getId(), orderDtoList.get(0).getId());
+        assertEquals(orderList.get(2).getId(), orderDtoList.get(2).getId());
     }
 
     @Test
