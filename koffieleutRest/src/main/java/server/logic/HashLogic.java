@@ -2,6 +2,8 @@ package server.logic;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.UUID;
+
 public class HashLogic {
     public String hashPassword(String passwordPlaintext) {
         int workload = 12;
@@ -17,5 +19,10 @@ public class HashLogic {
         passwordVerified = BCrypt.checkpw(password_plaintext, storedHash);
 
         return(passwordVerified);
+    }
+
+    public String createRandomId() {
+        UUID uuid = UUID.randomUUID();
+        return uuid.toString();
     }
 }

@@ -44,8 +44,7 @@ public class OrderController {
         Order currentOrder = orderLogic.createOrder(location, strength, milk, coffeeId, userRepository.findById(userId));
 
         if(currentOrder == null){
-            Response response = new Response("Locatie niet ingevuld");
-            return new ResponseEntity<String>(gson.toJson(response), HttpStatus.I_AM_A_TEAPOT);
+            return new ResponseEntity<String>(gson.toJson(new Response("Locatie niet ingevuld")), HttpStatus.I_AM_A_TEAPOT);
         }
         else{
             return orderRepository.save(currentOrder);

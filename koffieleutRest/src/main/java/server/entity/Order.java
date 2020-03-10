@@ -27,6 +27,12 @@ public class Order {
     public Order() {
     }
 
+    public Order(int id, User user, String location, String code) {
+        this.user = user;
+        this.location = location;
+        this.code = code;
+    }
+
     public Order(User user, String location, String code) {
         this.user = user;
         this.location = location;
