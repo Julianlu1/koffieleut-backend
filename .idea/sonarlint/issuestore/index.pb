@@ -27,3 +27,5 @@ t
 DkoffieleutRest/src/main/java/server/repositories/UserRepository.java,e\5\e5f31dbe252cb3054e9ac34e917b907928bd9c2f
 i
 9koffieleutRest/src/main/java/server/CoffeeController.java,d\6\d61633ee6c29ec0da42f0c73f08bc657d31cc142
+Q
+!koffieleutRest/koffieleutRest.iml,7\a\7acb9400646eb84e9de60c5da0dfcdc9a309e57e
