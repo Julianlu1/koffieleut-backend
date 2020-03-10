@@ -12,9 +12,7 @@ import server.entity.User;
 import server.logic.HashLogic;
 import server.repositories.UserRepository;
 
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class UserController {
@@ -64,7 +62,14 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/user/highscore")
+    public List<User> getHighscore(){
 
+        List<User> userList = userRepository.findAll();
+        Collections.sort(userList, Comparator.comparing(User::getScore).reversed());
+        System.out.println(userList);
+        return userList;
+    }
     @PutMapping("/user/score/add")
     public User addScore(@RequestBody Map<String, String> body){
         String id = body.get("id");
